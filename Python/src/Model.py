@@ -14,9 +14,16 @@ Kv = ((kFreeSpeed / 60.0 * 2.0 * math.pi) / (12.0 - kResistance * kFreeCurrent))
 Kt = (kNumMotors * kStallTorque) / kStallCurrent  # Torque constant
 kG = 5  # Gear ratio
 kr = 17 * 0.25 * 0.0254 / math.pi / 2.0  # Radius of pulley
-kDt = 0.010  # Control loop time step
+
+kDt = 0.01  # Control loop time step
+
+kMinHeight = 0.0
+kMaxHeight = 10.0
+
+kMaxVoltage = 12.0
+kSafeVoltage = 4.0
 
 
-def getAcceleration(voltage, velocity):
+def get_acceleration(voltage, velocity):
     return -Kt * kG * kG / (Kv * kResistance * kr * kr * kMass) * velocity + \
            kG * Kt / (kResistance * kr * kMass) * voltage
