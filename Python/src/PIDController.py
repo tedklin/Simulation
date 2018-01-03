@@ -1,7 +1,7 @@
 import Model
 
 
-class Controller:
+class PIDController:
     """PD Control"""
     _goal = 0.0
 
